@@ -1,0 +1,5 @@
+{
+  "name": "QamarSol - Dual Calendar Birthday Intelligence",
+  "description": "An intelligent birthday tracker supporting both Gregorian and Hijri calendars with automatic conversion, dual countdowns, and multilingual support.",
+  "requestFramePermissions": []
+}
