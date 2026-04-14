@@ -458,11 +458,18 @@ const AppContent = () => {
       {/* Main Content */}
       <main className="p-6 max-w-2xl mx-auto space-y-6">
         {sortedPeople.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center opacity-60">
-                <div className="bg-slate-100 dark:bg-slate-900 p-6 rounded-full mb-6">
-                    <Calendar size={48} className="text-slate-400" />
+            <div className="flex flex-col items-center justify-center py-24 text-center">
+                <div className="bg-primary-50 dark:bg-primary-900/20 p-6 rounded-full mb-6 shadow-sm border border-primary-100 dark:border-primary-800/30">
+                    <Calendar size={48} className="text-primary-500 dark:text-primary-400" />
                 </div>
-                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed">{t.emptyState}</p>
+                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed mb-8">{t.emptyState}</p>
+                <button
+                  onClick={() => setIsAddModalOpen(true)}
+                  className="px-6 py-3 bg-slate-900 dark:bg-primary-600 text-white rounded-xl shadow-lg shadow-slate-900/20 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center font-medium"
+                >
+                  <Plus size={20} className="mr-2" />
+                  {t.addPerson}
+                </button>
             </div>
         ) : (
             sortedPeople.map(person => (
@@ -470,6 +477,10 @@ const AppContent = () => {
             ))
         )}
       </main>
+
+      <footer className="text-center pb-8 text-slate-400 text-sm mt-8">
+        QamarSol &copy; {new Date().getFullYear()} - Dual Calendar Intelligence
+      </footer>
 
       {/* Floating Action Button */}
       <div className="fixed bottom-8 right-8 z-50">
