@@ -1,20 +1,44 @@
 <div align="center">
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+
+# QamarSol 🌙☀️
+
+**Çift Takvimli Doğum Günü Takipçisi / Dual-Calendar Birthday Intelligence**
 </div>
 
-# Run and deploy your AI Studio app
+QamarSol, sevdiklerinizin doğum günlerini hem Miladi (Gregorian) hem de Hicri (Hijri) takvimlere göre takip etmenizi sağlayan şık ve akıllı bir uygulamadır.
 
-This contains everything you need to run your app locally.
+## ✨ Özellikler (Features)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v
+- **Çift Takvim Desteği:** Doğum günlerini hem Miladi hem de Hicri takvime göre görüntüler ve geri sayım yapar.
+- **Otomatik Hesaplama:** Miladi tarihi girdiğinizde otomatik olarak doğru Hicri tarihi hesaplar. Manuel giriş de mümkündür.
+- **Çoklu Dil Desteği:** Türkçe, İngilizce, Arapça, Farsça ve Eskimez Türkçe (Osmanlıca) dillerini destekler. RTL (Sağdan Sola) okuma yönüne tam uyumludur.
+- **Modern Arayüz:** Açık ve koyu tema seçenekleri, sistem tercihlerine uyum ve göz yormayan zarif bir tasarım sunar.
+- **Yerel Depolama:** Verileriniz tarayıcınızda güvende kalır, hiçbir sunucuya gönderilmez.
 
-## Run Locally
+## 🚀 Kurulum ve Çalıştırma (Run Locally)
 
-**Prerequisites:**  Node.js
+**Önkoşullar:** Node.js (v18+)
 
+Uygulamayı kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin:
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. **Bağımlılıkları Yükleyin:**
+   ```bash
+   npm install
+   ```
+
+2. **Geliştirme Sunucusunu Başlatın:**
+   ```bash
+   npm run dev
+   ```
+
+3. Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresine giderek uygulamayı görüntüleyin.
+
+## 🛠️ Teknolojiler (Tech Stack)
+- **Framework:** React 19, Vite
+- **Dil:** TypeScript
+- **Stil:** Tailwind CSS
+- **İkonlar:** Lucide React
+
+---
+*Geliştirilmiş ve iyileştirilmiş dokümantasyon.*

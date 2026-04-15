@@ -356,22 +356,23 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.language}</h3>
                 <div className="grid grid-cols-2 gap-3">
                     {[
-                        { id: Language.OTTOMAN, label: 'اسكيمز توركجه' }, // Eskimez Türkçe in Arabic script
-                        { id: Language.TURKISH, label: 'Türkçe' },
-                        { id: Language.ENGLISH, label: 'English' },
-                        { id: Language.ARABIC, label: 'العربية' },
-                        { id: Language.PERSIAN, label: 'فارسی' },
+                        { id: Language.OTTOMAN, label: 'اسكيمز توركجه', icon: '📜' },
+                        { id: Language.TURKISH, label: 'Türkçe', icon: '🇹🇷' },
+                        { id: Language.ENGLISH, label: 'English', icon: '🇬🇧' },
+                        { id: Language.ARABIC, label: 'العربية', icon: '🇸🇦' },
+                        { id: Language.PERSIAN, label: 'فارسی', icon: '🇮🇷' },
                     ].map(langOption => (
                         <button
                             key={langOption.id}
                             onClick={() => updateSettings({ language: langOption.id })}
-                            className={`p-4 rounded-2xl border text-sm font-bold transition-all ${
+                            className={`p-4 flex items-center justify-center space-x-2 rounded-2xl border text-sm font-bold transition-all ${
                                 settings.language === langOption.id 
                                 ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 shadow-sm' 
                                 : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
                             }`}
                         >
-                            {langOption.label}
+                            <span className="text-lg opacity-80">{langOption.icon}</span>
+                            <span>{langOption.label}</span>
                         </button>
                     ))}
                 </div>
@@ -456,13 +457,17 @@ const AppContent = () => {
       </header>
 
       {/* Main Content */}
-      <main className="p-6 max-w-2xl mx-auto space-y-6">
+      <main className="p-6 max-w-2xl mx-auto space-y-6 min-h-[60vh]">
         {sortedPeople.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center opacity-60">
-                <div className="bg-slate-100 dark:bg-slate-900 p-6 rounded-full mb-6">
-                    <Calendar size={48} className="text-slate-400" />
+            <div className="flex flex-col items-center justify-center py-32 text-center">
+                <div className="relative mb-8 group">
+                    <div className="absolute inset-0 bg-primary-200 dark:bg-primary-900/30 blur-2xl rounded-full opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
+                    <div className="bg-gradient-to-tr from-slate-100 to-white dark:from-slate-800 dark:to-slate-700 p-8 rounded-[2rem] shadow-xl border border-white/50 dark:border-slate-600/50 relative z-10 transform group-hover:scale-105 transition-transform duration-500">
+                        <Calendar size={56} className="text-primary-500 dark:text-primary-400 drop-shadow-md" />
+                    </div>
                 </div>
-                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed">{t.emptyState}</p>
+                <h3 className="text-2xl font-serif font-bold text-slate-800 dark:text-slate-200 mb-3 tracking-tight">{t.welcome.replace('{name}', settings.userName || '')}</h3>
+                <p className="text-lg text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">{t.emptyState}</p>
             </div>
         ) : (
             sortedPeople.map(person => (
@@ -470,6 +475,11 @@ const AppContent = () => {
             ))
         )}
       </main>
+
+      {/* Footer */}
+      <footer className="mt-auto py-8 text-center text-sm font-medium text-slate-400 dark:text-slate-600 border-t border-slate-200/50 dark:border-slate-800/50">
+        <p>QamarSol - Dual Calendar Intelligence</p>
+      </footer>
 
       {/* Floating Action Button */}
       <div className="fixed bottom-8 right-8 z-50">
@@ -497,7 +507,7 @@ const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [settings, setSettingsState] = useState<AppSettings>(() => {
     const saved = localStorage.getItem('qamarsol_settings');
     return saved ? JSON.parse(saved) : {
-      language: Language.OTTOMAN, // Default to Ottoman
+      language: Language.TURKISH, // Default to Turkish
       theme: Theme.SYSTEM,
       primaryCalendar: CalendarType.GREGORIAN,
       userName: ''
