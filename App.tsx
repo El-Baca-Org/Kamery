@@ -108,7 +108,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-slate-950/50 border border-white dark:border-slate-700/50 hover:scale-[1.01] transition-all duration-300 relative group overflow-hidden">
+    <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl shadow-slate-300/50 hover:shadow-2xl dark:shadow-slate-950/50 border border-white dark:border-slate-700/50 hover:scale-[1.01] transition-all duration-300 relative group overflow-hidden">
       {/* Decorative Glow */}
       <div className="absolute top-0 right-0 -mt-16 -mr-16 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -440,7 +440,7 @@ const AppContent = () => {
   return (
     <div className="min-h-screen pb-32 bg-slate-50 dark:bg-slate-950 bg-islamic-pattern bg-fixed">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 px-6 py-5 flex justify-between items-center transition-all duration-300">
+      <header className="sticky top-0 z-40 bg-gradient-to-r from-slate-50 to-slate-100/80 dark:from-slate-900/80 dark:to-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 px-6 py-5 flex justify-between items-center transition-all duration-300">
         <div>
            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{t.welcome.replace('{name}', settings.userName || 'User')}</div>
            <h1 className="text-3xl font-serif font-black text-slate-900 dark:text-white tracking-tight">
