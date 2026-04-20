@@ -108,15 +108,15 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-slate-950/50 border border-white dark:border-slate-700/50 hover:scale-[1.01] transition-all duration-300 relative group overflow-hidden">
+    <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl p-6 shadow-lg hover:shadow-2xl shadow-slate-200/50 dark:shadow-slate-950/50 border border-slate-100 dark:border-slate-700/50 hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden">
       {/* Decorative Glow */}
-      <div className="absolute top-0 right-0 -mt-16 -mr-16 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-0 right-0 -mt-16 -mr-16 w-32 h-32 bg-primary-500/10 group-hover:bg-primary-500/20 transition-colors duration-500 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="flex justify-between items-start mb-6 relative z-10">
         <div>
-          <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">{person.name}</h3>
+          <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{person.name}</h3>
           {person.relationship && (
-            <span className="text-xs font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase inline-block bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded-md mt-1.5">
+            <span className="text-xs font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase inline-block bg-slate-100 dark:bg-slate-700/50 px-2.5 py-1 rounded-md mt-2 shadow-sm">
               {person.relationship}
             </span>
           )}
@@ -149,7 +149,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
 
       <div className="grid grid-cols-2 gap-4 relative z-10">
         {/* Gregorian Side */}
-        <div className="bg-gradient-to-br from-gregorian-50 to-emerald-50/50 dark:from-gregorian-900/20 dark:to-emerald-900/10 rounded-2xl p-4 border border-gregorian-100 dark:border-gregorian-800/30 flex flex-col justify-between">
+        <div className="bg-gradient-to-br from-gregorian-50 to-emerald-50/50 dark:from-gregorian-900/30 dark:to-emerald-900/20 rounded-2xl p-4 border border-gregorian-100 dark:border-gregorian-800/50 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
             <div>
                 <div className="flex items-center space-x-2 text-gregorian-700 dark:text-gregorian-400 mb-3">
                     <Sun size={18} className="stroke-[2.5]" />
@@ -171,7 +171,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
         </div>
 
         {/* Hijri Side */}
-        <div className="bg-gradient-to-br from-hijri-50 to-orange-50/50 dark:from-hijri-900/20 dark:to-orange-900/10 rounded-2xl p-4 border border-hijri-100 dark:border-hijri-800/30 flex flex-col justify-between">
+        <div className="bg-gradient-to-br from-hijri-50 to-orange-50/50 dark:from-hijri-900/30 dark:to-orange-900/20 rounded-2xl p-4 border border-hijri-100 dark:border-hijri-800/50 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
             <div>
                 <div className="flex items-center space-x-2 text-hijri-700 dark:text-hijri-500 mb-3">
                     <Moon size={18} className="stroke-[2.5]" />
@@ -354,7 +354,7 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
             
             <section>
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.language}</h3>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {[
                         { id: Language.OTTOMAN, label: 'اسكيمز توركجه' }, // Eskimez Türkçe in Arabic script
                         { id: Language.TURKISH, label: 'Türkçe' },
@@ -365,10 +365,10 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
                         <button
                             key={langOption.id}
                             onClick={() => updateSettings({ language: langOption.id })}
-                            className={`p-4 rounded-2xl border text-sm font-bold transition-all ${
+                            className={`p-4 rounded-2xl border text-sm font-bold transition-all transform active:scale-95 ${
                                 settings.language === langOption.id 
-                                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 shadow-sm' 
-                                : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
+                                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 shadow-md shadow-primary-500/10'
+                                : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:shadow-sm'
                             }`}
                         >
                             {langOption.label}
@@ -379,22 +379,22 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
 
             <section>
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.theme}</h3>
-                <div className="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl">
+                <div className="flex flex-col sm:flex-row bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl gap-1">
                     <button 
                         onClick={() => updateSettings({ theme: Theme.LIGHT })}
-                        className={`flex-1 flex items-center justify-center p-3 rounded-xl text-sm font-bold transition-all ${settings.theme === Theme.LIGHT ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}
+                        className={`flex-1 flex items-center justify-center p-3 rounded-xl text-sm font-bold transition-all transform active:scale-95 ${settings.theme === Theme.LIGHT ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
                     >
                         <Sun size={18} className="mr-2" /> {t.light}
                     </button>
                     <button 
                         onClick={() => updateSettings({ theme: Theme.DARK })}
-                        className={`flex-1 flex items-center justify-center p-3 rounded-xl text-sm font-bold transition-all ${settings.theme === Theme.DARK ? 'bg-slate-700 shadow-sm text-white' : 'text-slate-500 hover:text-slate-300'}`}
+                        className={`flex-1 flex items-center justify-center p-3 rounded-xl text-sm font-bold transition-all transform active:scale-95 ${settings.theme === Theme.DARK ? 'bg-slate-700 shadow-sm text-white' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
                     >
                         <Moon size={18} className="mr-2" /> {t.dark}
                     </button>
                     <button 
                         onClick={() => updateSettings({ theme: Theme.SYSTEM })}
-                        className={`flex-1 flex items-center justify-center p-3 rounded-xl text-sm font-bold transition-all ${settings.theme === Theme.SYSTEM ? 'bg-white dark:bg-slate-600 shadow-sm text-slate-900 dark:text-white' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'}`}
+                        className={`flex-1 flex items-center justify-center p-3 rounded-xl text-sm font-bold transition-all transform active:scale-95 ${settings.theme === Theme.SYSTEM ? 'bg-white dark:bg-slate-600 shadow-sm text-slate-900 dark:text-white' : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50'}`}
                     >
                        <SettingsIcon size={18} className="mr-2" /> {t.system}
                     </button>
@@ -407,8 +407,8 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
                     type="text" 
                     value={settings.userName} 
                     onChange={(e) => updateSettings({ userName: e.target.value })}
-                    className="w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary-500 outline-none transition-all"
-                    placeholder="Enter your name"
+                    className="w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary-500 outline-none transition-all shadow-sm"
+                    placeholder={t.userName}
                 />
             </section>
 
@@ -442,7 +442,7 @@ const AppContent = () => {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 px-6 py-5 flex justify-between items-center transition-all duration-300">
         <div>
-           <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{t.welcome.replace('{name}', settings.userName || 'User')}</div>
+           <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{t.welcome.replace('{name}', settings.userName || t.userName)}</div>
            <h1 className="text-3xl font-serif font-black text-slate-900 dark:text-white tracking-tight">
              {t.appTitle}
            </h1>
@@ -458,11 +458,11 @@ const AppContent = () => {
       {/* Main Content */}
       <main className="p-6 max-w-2xl mx-auto space-y-6">
         {sortedPeople.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center opacity-60">
-                <div className="bg-slate-100 dark:bg-slate-900 p-6 rounded-full mb-6">
-                    <Calendar size={48} className="text-slate-400" />
+            <div className="flex flex-col items-center justify-center py-24 text-center opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-slate-200/50 dark:bg-slate-800/50 p-8 rounded-full mb-8 shadow-inner ring-1 ring-slate-900/5 dark:ring-white/5 animate-pulse">
+                    <Calendar size={56} className="text-slate-400 dark:text-slate-500" />
                 </div>
-                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed">{t.emptyState}</p>
+                <p className="text-xl font-serif text-slate-600 dark:text-slate-300 max-w-sm leading-relaxed">{t.emptyState}</p>
             </div>
         ) : (
             sortedPeople.map(person => (
