@@ -33,6 +33,7 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'No birthdays added yet. Tap the + button to start remembering!',
     manual: 'Manual',
     auto: 'Auto',
+    search: 'Search...',
   },
   [Language.TURKISH]: {
     appTitle: 'QamarSol',
@@ -66,6 +67,7 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'Henüz doğum günü eklenmedi. Başlamak için + düğmesine dokunun!',
     manual: 'Elle',
     auto: 'Oto',
+    search: 'Ara...',
   },
   [Language.OTTOMAN]: {
     appTitle: 'قمرصول',
@@ -99,6 +101,7 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'هنوز بر تولد قيد ايديلمدى. باشلامق ايچون + طوشنه باصكز!',
     manual: 'ال ايله',
     auto: 'آلى',
+    search: 'آرا...',
   },
   [Language.ARABIC]: {
     appTitle: 'قمر وشمس',
@@ -132,6 +135,7 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'لم يتم إضافة أعياد ميلاد بعد. اضغط على زر + للبدء!',
     manual: 'يدوي',
     auto: 'آلي',
+    search: 'بحث...',
   },
   [Language.PERSIAN]: {
     appTitle: 'قمر و شمس',
@@ -165,6 +169,7 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'هنوز تولدی اضافه نشده است. برای شروع دکمه + را بزنید!',
     manual: 'دستی',
     auto: 'خودکار',
+    search: 'جستجو...',
   },
 };
 

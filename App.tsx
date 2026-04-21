@@ -14,7 +14,8 @@ import {
   User, 
   ChevronRight,
   X,
-  Languages
+  Languages,
+  Search
 } from 'lucide-react';
 
 // --- Contexts ---
@@ -55,6 +56,21 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; title: string; chi
           {children}
         </div>
       </div>
+    </div>
+  );
+};
+
+const InitialsAvatar = ({ name }: { name: string }) => {
+  const initials = name
+    .split(' ')
+    .map(n => n[0])
+    .join('')
+    .substring(0, 2)
+    .toUpperCase();
+
+  return (
+    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-bold text-lg shadow-inner mr-4">
+      {initials}
     </div>
   );
 };
@@ -113,13 +129,16 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
       <div className="absolute top-0 right-0 -mt-16 -mr-16 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="flex justify-between items-start mb-6 relative z-10">
-        <div>
-          <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">{person.name}</h3>
-          {person.relationship && (
-            <span className="text-xs font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase inline-block bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded-md mt-1.5">
-              {person.relationship}
-            </span>
-          )}
+        <div className="flex items-center">
+          <InitialsAvatar name={person.name} />
+          <div>
+            <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">{person.name}</h3>
+            {person.relationship && (
+              <span className="text-xs font-bold tracking-wider text-slate-500 dark:text-slate-400 uppercase inline-block bg-slate-100 dark:bg-slate-700/50 px-2 py-1 rounded-md mt-1.5">
+                {person.relationship}
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <button 
@@ -425,12 +444,17 @@ const AppContent = () => {
   const { settings, people, addPerson, t } = useApp();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'settings'>('dashboard');
+  const [searchQuery, setSearchQuery] = useState('');
 
   if (activeTab === 'settings') {
       return <SettingsView onClose={() => setActiveTab('dashboard')} />;
   }
 
-  const sortedPeople = [...people].sort((a, b) => {
+  const filteredPeople = people.filter(person =>
+    person.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const sortedPeople = [...filteredPeople].sort((a, b) => {
       // Sort by nearest birthday (either Gregorian or Hijri)
       const nextAG = getDaysUntil(getNextGregorianBirthday(new Date(a.gregorianDate)).date);
       const nextBG = getDaysUntil(getNextGregorianBirthday(new Date(b.gregorianDate)).date);
@@ -454,6 +478,20 @@ const AppContent = () => {
           <SettingsIcon size={22} />
         </button>
       </header>
+
+      {/* Search Bar */}
+      <div className="px-6 py-4 max-w-2xl mx-auto">
+        <div className="relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+          <input
+            type="text"
+            placeholder={t.search || "Search..."}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm focus:ring-2 focus:ring-primary-500 outline-none transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-400 shadow-sm"
+          />
+        </div>
+      </div>
 
       {/* Main Content */}
       <main className="p-6 max-w-2xl mx-auto space-y-6">
