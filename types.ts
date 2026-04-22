@@ -71,4 +71,6 @@ export interface Translation {
   emptyState: string;
   manual: string;
   auto: string;
+  searchPlaceholder: string;
+  noResults: string;
 }

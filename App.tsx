@@ -14,7 +14,8 @@ import {
   User, 
   ChevronRight,
   X,
-  Languages
+  Languages,
+  Search
 } from 'lucide-react';
 
 // --- Contexts ---
@@ -425,12 +426,22 @@ const AppContent = () => {
   const { settings, people, addPerson, t } = useApp();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'settings'>('dashboard');
+  const [searchQuery, setSearchQuery] = useState('');
 
   if (activeTab === 'settings') {
       return <SettingsView onClose={() => setActiveTab('dashboard')} />;
   }
 
-  const sortedPeople = [...people].sort((a, b) => {
+  const filteredPeople = people.filter(person => {
+      if (!searchQuery) return true;
+      const query = searchQuery.toLowerCase();
+      return (
+          person.name.toLowerCase().includes(query) ||
+          (person.relationship && person.relationship.toLowerCase().includes(query))
+      );
+  });
+
+  const sortedPeople = [...filteredPeople].sort((a, b) => {
       // Sort by nearest birthday (either Gregorian or Hijri)
       const nextAG = getDaysUntil(getNextGregorianBirthday(new Date(a.gregorianDate)).date);
       const nextBG = getDaysUntil(getNextGregorianBirthday(new Date(b.gregorianDate)).date);
@@ -441,11 +452,16 @@ const AppContent = () => {
     <div className="min-h-screen pb-32 bg-slate-50 dark:bg-slate-950 bg-islamic-pattern bg-fixed">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 px-6 py-5 flex justify-between items-center transition-all duration-300">
-        <div>
-           <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{t.welcome.replace('{name}', settings.userName || 'User')}</div>
-           <h1 className="text-3xl font-serif font-black text-slate-900 dark:text-white tracking-tight">
-             {t.appTitle}
-           </h1>
+        <div className="flex items-center space-x-3">
+           <div className="bg-gradient-to-br from-primary-500 to-hijri-500 p-2 rounded-xl text-white shadow-lg shadow-primary-500/30">
+               <Moon size={24} className="stroke-[2]" />
+           </div>
+           <div>
+              <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{t.welcome.replace('{name}', settings.userName || 'User')}</div>
+              <h1 className="text-3xl font-serif font-black text-slate-900 dark:text-white tracking-tight leading-none">
+                {t.appTitle}
+              </h1>
+           </div>
         </div>
         <button 
             onClick={() => setActiveTab('settings')}
@@ -457,12 +473,31 @@ const AppContent = () => {
 
       {/* Main Content */}
       <main className="p-6 max-w-2xl mx-auto space-y-6">
+
+        {/* Search Bar */}
+        {people.length > 0 && (
+            <div className="relative">
+                <div className="absolute inset-y-0 start-0 ps-4 flex items-center pointer-events-none">
+                    <Search className="h-5 w-5 text-slate-400" />
+                </div>
+                <input
+                    type="text"
+                    placeholder={t.searchPlaceholder}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="block w-full ps-11 pe-4 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent transition-all shadow-sm font-medium text-slate-900 dark:text-slate-100"
+                />
+            </div>
+        )}
+
         {sortedPeople.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-24 text-center opacity-60">
                 <div className="bg-slate-100 dark:bg-slate-900 p-6 rounded-full mb-6">
-                    <Calendar size={48} className="text-slate-400" />
+                    {searchQuery ? <Search size={48} className="text-slate-400" /> : <Calendar size={48} className="text-slate-400" />}
                 </div>
-                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed">{t.emptyState}</p>
+                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed">
+                    {searchQuery ? t.noResults : t.emptyState}
+                </p>
             </div>
         ) : (
             sortedPeople.map(person => (
