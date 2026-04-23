@@ -47,7 +47,7 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; title: string; chi
       <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-300 border border-white/20 dark:border-slate-700/50 ring-1 ring-black/5">
         <div className="flex justify-between items-center p-5 border-b border-slate-100 dark:border-slate-800">
           <h2 className="text-2xl font-serif font-bold text-slate-800 dark:text-slate-100 tracking-tight">{title}</h2>
-          <button onClick={onClose} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-500 transition-colors">
+          <button onClick={onClose} aria-label={useApp().t.close} title={useApp().t.close} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-500 transition-colors">
             <X size={20} />
           </button>
         </div>
@@ -124,6 +124,8 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
         <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <button 
                 onClick={() => setIsEditing(true)}
+                aria-label={t.editPerson}
+                title={t.editPerson}
                 className="p-2 text-slate-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-colors"
             >
                 <SettingsIcon size={18} />
@@ -131,6 +133,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
             {showDeleteConfirm ? (
                 <button 
                 onClick={() => deletePerson(person.id)}
+                aria-label={t.delete}
                 className="p-2 text-red-600 bg-red-50 dark:bg-red-900/30 rounded-xl font-bold text-xs"
                 >
                 {t.delete}?
@@ -139,6 +142,8 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
                 <button 
                 onClick={() => setShowDeleteConfirm(true)}
                 onBlur={() => setTimeout(() => setShowDeleteConfirm(false), 2000)}
+                aria-label={t.delete}
+                title={t.delete}
                 className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-xl transition-colors"
                 >
                 <Trash2 size={18} />
@@ -449,6 +454,8 @@ const AppContent = () => {
         </div>
         <button 
             onClick={() => setActiveTab('settings')}
+            aria-label={t.settings}
+            title={t.settings}
             className="p-3 bg-slate-100 dark:bg-slate-900 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors shadow-sm"
         >
           <SettingsIcon size={22} />
@@ -462,7 +469,8 @@ const AppContent = () => {
                 <div className="bg-slate-100 dark:bg-slate-900 p-6 rounded-full mb-6">
                     <Calendar size={48} className="text-slate-400" />
                 </div>
-                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed">{t.emptyState}</p>
+                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed mb-2">{t.emptyState}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xs">{t.emptyStateSubtitle}</p>
             </div>
         ) : (
             sortedPeople.map(person => (
@@ -475,6 +483,8 @@ const AppContent = () => {
       <div className="fixed bottom-8 right-8 z-50">
         <button 
           onClick={() => setIsAddModalOpen(true)}
+          aria-label={t.addPerson}
+          title={t.addPerson}
           className="bg-slate-900 dark:bg-primary-600 text-white p-5 rounded-2xl shadow-2xl shadow-slate-900/30 hover:scale-110 hover:-rotate-90 active:scale-95 transition-all duration-300 flex items-center justify-center group"
         >
           <Plus size={32} className="group-hover:rotate-90 transition-transform duration-300" />
