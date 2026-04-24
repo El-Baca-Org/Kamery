@@ -14,7 +14,8 @@ import {
   User, 
   ChevronRight,
   X,
-  Languages
+  Languages,
+  Edit2
 } from 'lucide-react';
 
 // --- Contexts ---
@@ -59,27 +60,6 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; title: string; chi
   );
 };
 
-const CountdownBadge = ({ days, label, colorClass, icon: Icon }: { days: number; label: string; colorClass: string; icon: any }) => {
-  const { t } = useApp();
-  
-  let dayText = '';
-  if (days === 0) dayText = t.today;
-  else if (days === 1) dayText = t.tomorrow;
-  else dayText = t.inDays.replace('{days}', days.toString());
-
-  return (
-    <div className={`flex flex-col items-center justify-center p-3 rounded-xl ${colorClass} bg-opacity-10 border border-opacity-20`}>
-      <div className="flex items-center space-x-1 mb-1 opacity-70">
-        <Icon size={14} />
-        <span className="text-xs font-semibold uppercase tracking-wider">{label}</span>
-      </div>
-      <span className="text-lg font-bold">
-        {dayText}
-      </span>
-    </div>
-  );
-};
-
 const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
   const { t, lang, deletePerson, updatePerson } = useApp();
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -94,20 +74,8 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
   const nextH = getNextHijriBirthday(hDateParts);
   const daysH = getDaysUntil(nextH.date);
 
-  if (isEditing) {
-    return (
-        <PersonForm 
-            initialData={person} 
-            onClose={() => setIsEditing(false)} 
-            onSubmit={(p) => {
-                updatePerson(p);
-                setIsEditing(false);
-            }} 
-        />
-    )
-  }
-
   return (
+    <>
     <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-slate-950/50 border border-white dark:border-slate-700/50 hover:scale-[1.01] transition-all duration-300 relative group overflow-hidden">
       {/* Decorative Glow */}
       <div className="absolute top-0 right-0 -mt-16 -mr-16 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -126,7 +94,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
                 onClick={() => setIsEditing(true)}
                 className="p-2 text-slate-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-colors"
             >
-                <SettingsIcon size={18} />
+                <Edit2 size={18} />
             </button>
             {showDeleteConfirm ? (
                 <button 
@@ -162,7 +130,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
             <div className="mt-4">
                 <div className={`text-3xl font-serif font-bold ${daysG === 0 ? 'text-red-500 animate-pulse' : 'text-slate-900 dark:text-white'}`}>
                     {daysG === 0 ? t.today : daysG}
-                    {daysG !== 0 && <span className="text-xs font-sans font-medium text-slate-500 ml-1.5 uppercase tracking-wide">{t.daysRemaining.replace('days left', '')}</span>}
+                    {daysG !== 0 && <span className="text-xs font-sans font-medium text-slate-500 ml-1.5 uppercase tracking-wide">{t.daysRemaining}</span>}
                 </div>
                 <div className="mt-2 text-xs font-semibold text-gregorian-600/80 dark:text-gregorian-400/80">
                     {t.turns} {nextG.age}
@@ -184,7 +152,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
             <div className="mt-4">
                 <div className={`text-3xl font-serif font-bold ${daysH === 0 ? 'text-red-500 animate-pulse' : 'text-slate-900 dark:text-white'}`}>
                     {daysH === 0 ? t.today : daysH}
-                    {daysH !== 0 && <span className="text-xs font-sans font-medium text-slate-500 ml-1.5 uppercase tracking-wide">{t.daysRemaining.replace('days left', '')}</span>}
+                    {daysH !== 0 && <span className="text-xs font-sans font-medium text-slate-500 ml-1.5 uppercase tracking-wide">{t.daysRemaining}</span>}
                 </div>
                  <div className="mt-2 text-xs font-semibold text-hijri-600/80 dark:text-hijri-400/80">
                     {t.turns} {nextH.age}
@@ -193,6 +161,22 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
         </div>
       </div>
     </div>
+
+    <Modal
+        isOpen={isEditing}
+        onClose={() => setIsEditing(false)}
+        title={t.editPerson}
+      >
+        <PersonForm
+            initialData={person}
+            onClose={() => setIsEditing(false)}
+            onSubmit={(p) => {
+                updatePerson(p);
+                setIsEditing(false);
+            }}
+        />
+      </Modal>
+    </>
   );
 };
 
