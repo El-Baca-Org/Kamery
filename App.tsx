@@ -497,7 +497,7 @@ const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [settings, setSettingsState] = useState<AppSettings>(() => {
     const saved = localStorage.getItem('qamarsol_settings');
     return saved ? JSON.parse(saved) : {
-      language: Language.OTTOMAN, // Default to Ottoman
+      language: Language.TURKISH, // Default to Turkish
       theme: Theme.SYSTEM,
       primaryCalendar: CalendarType.GREGORIAN,
       userName: ''
