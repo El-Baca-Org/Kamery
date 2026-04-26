@@ -33,6 +33,9 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'No birthdays added yet. Tap the + button to start remembering!',
     manual: 'Manual',
     auto: 'Auto',
+    namePlaceholder: 'e.g. Ali Yilmaz',
+    relationshipPlaceholder: 'e.g. Father, Colleague',
+    userNamePlaceholder: 'Enter your name',
   },
   [Language.TURKISH]: {
     appTitle: 'QamarSol',
@@ -66,6 +69,9 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'Henüz doğum günü eklenmedi. Başlamak için + düğmesine dokunun!',
     manual: 'Elle',
     auto: 'Oto',
+    namePlaceholder: 'örn. Ali Yılmaz',
+    relationshipPlaceholder: 'örn. Baba, Meslektaş',
+    userNamePlaceholder: 'Adınızı girin',
   },
   [Language.OTTOMAN]: {
     appTitle: 'قمرصول',
@@ -99,6 +105,9 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'هنوز بر تولد قيد ايديلمدى. باشلامق ايچون + طوشنه باصكز!',
     manual: 'ال ايله',
     auto: 'آلى',
+    namePlaceholder: 'مثلا على يلماز',
+    relationshipPlaceholder: 'مثلا پدري، زميلي',
+    userNamePlaceholder: 'اسمنزی يازكز',
   },
   [Language.ARABIC]: {
     appTitle: 'قمر وشمس',
@@ -132,6 +141,9 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'لم يتم إضافة أعياد ميلاد بعد. اضغط على زر + للبدء!',
     manual: 'يدوي',
     auto: 'آلي',
+    namePlaceholder: 'على سبيل المثال علي يلماز',
+    relationshipPlaceholder: 'على سبيل المثال، أب، زميل',
+    userNamePlaceholder: 'أدخل اسمك',
   },
   [Language.PERSIAN]: {
     appTitle: 'قمر و شمس',
@@ -165,6 +177,9 @@ export const translations: Record<Language, Translation> = {
     emptyState: 'هنوز تولدی اضافه نشده است. برای شروع دکمه + را بزنید!',
     manual: 'دستی',
     auto: 'خودکار',
+    namePlaceholder: 'مثلاً علی ییلماز',
+    relationshipPlaceholder: 'مثلاً پدر، همکار',
+    userNamePlaceholder: 'نام خود را وارد کنید',
   },
 };
 
