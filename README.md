@@ -1,46 +1,61 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <h1>QamarSol - Dual Calendar Birthday Intelligence</h1>
+  <p>An intelligent birthday tracker supporting both Gregorian and Hijri calendars with automatic conversion, dual countdowns, and multilingual support.</p>
+  <p><i>Hem Miladi hem de Hicri takvimleri destekleyen, otomatik dönüştürme, çift geri sayım ve çoklu dil desteğine sahip akıllı doğum günü takip uygulaması.</i></p>
 </div>
 
-# QamarSol - Doğum Günü Takipçisi (Birthday Tracker)
+## 🌍 Language Options / Dil Seçenekleri
+- English
+- Türkçe (Turkish)
+- اسكيمز توركجه (Ottoman Turkish)
+- العربية (Arabic)
+- فارسی (Persian)
 
-QamarSol, doğum günlerini hem Miladi hem de Hicri takvimlerde takip etmenizi sağlayan çok dilli bir akıllı takvim uygulamasıdır. Varsayılan olarak Türkçe arayüzle gelir ancak İngilizce, Osmanlıca, Arapça ve Farsça gibi birçok dili destekler.
+## 🚀 Features / Özellikler
+- **Dual Calendar Support / Çift Takvim Desteği**: Track birthdays in both Gregorian and Hijri calendars simultaneously. (Miladi ve Hicri takvimlerde aynı anda doğum günü takibi.)
+- **Auto-Conversion / Otomatik Dönüştürme**: Easily convert Gregorian dates to Hijri equivalents. (Miladi tarihleri kolayca Hicri karşılıklarına çevirin.)
+- **Smart Countdowns / Akıllı Geri Sayımlar**: Shows days remaining until the next birthday in both calendars. (Her iki takvimde de bir sonraki doğum gününe kalan günleri gösterir.)
+- **Multilingual Support / Çoklu Dil Desteği**: Includes LTR and RTL language layouts. (Soldan sağa ve sağdan sola dil düzenlerini içerir.)
+- **Themes / Temalar**: Light, Dark, and System modes. (Açık, Koyu ve Sistem temaları.)
 
-QamarSol is a multi-lingual smart calendar application that allows you to track birthdays in both Gregorian and Hijri calendars. It comes with a Turkish interface by default but supports many languages such as English, Ottoman Turkish, Arabic, and Persian.
+## 💻 Run Locally / Yerel Olarak Çalıştırma
 
-## Özellikler (Features)
+**Prerequisites / Ön Koşullar:** Node.js
 
-- 📅 Çift Takvim Desteği: Doğum günlerini Miladi ve Hicri olarak takip etme (Dual Calendar Support: Track birthdays in Gregorian and Hijri)
-- 🌍 Çoklu Dil Seçeneği: Türkçe, İngilizce, Osmanlıca, Arapça ve Farsça (Multi-language: Turkish, English, Ottoman, Arabic, and Persian)
-- 🌓 Tema Seçenekleri: Açık, Koyu ve Sistem varsayılanı (Theme Options: Light, Dark, and System default)
-- 💾 Yerel Kayıt: Verileriniz tarayıcınızda (localStorage) güvenle saklanır (Local Storage: Your data is securely stored in your browser)
-- 📱 Duyarlı Tasarım: Tüm cihazlarda harika görünen Tailwind CSS tabanlı modern arayüz (Responsive Design: Modern UI based on Tailwind CSS that looks great on all devices)
-
-## Kurulum ve Çalıştırma (Run Locally)
-
-**Ön Koşullar (Prerequisites):** Node.js
-
-Uygulamayı yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin (Follow these steps to run the application on your local machine):
-
-1. Bağımlılıkları yükleyin (Install dependencies):
+### English Instructions
+1. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Ortam değişkenlerini ayarlayın (Set environment variables):
-   (Eğer bir Gemini API kullanıyorsanız, `.env.local` dosyasına `GEMINI_API_KEY` değişkenini ekleyin)
-
-3. Geliştirme sunucusunu başlatın (Run the app):
+2. Start the development server:
    ```bash
    npm run dev
    ```
+3. Build for production:
+   ```bash
+   npm run build
+   ```
 
-Geliştirme sunucusu varsayılan olarak `http://localhost:3000` adresinde çalışacaktır.
-(The development server will run at `http://localhost:3000` by default.)
+### Türkçe Kurulum Talimatları
+1. Bağımlılıkları yükleyin:
+   ```bash
+   npm install
+   ```
+2. Geliştirme sunucusunu başlatın:
+   ```bash
+   npm run dev
+   ```
+3. Üretime (production) hazır hale getirmek için derleyin:
+   ```bash
+   npm run build
+   ```
 
-## Teknolojiler (Technologies)
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Lucide React (İkonlar / Icons)
+## 🛠️ Technical Details / Teknik Detaylar
+- Built with React, TypeScript, and Vite.
+- Styling powered by Tailwind CSS.
+- Uses `lucide-react` for beautiful iconography.
+- Data persists in the browser via `localStorage`.
+
+<div align="center">
+  <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
