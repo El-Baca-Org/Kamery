@@ -15,7 +15,8 @@ import {
   ChevronRight,
   X,
   Languages,
-  Search
+  Search,
+  ArrowLeft
 } from 'lucide-react';
 
 // --- Contexts ---
@@ -373,8 +374,16 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
     const { settings, updateSettings, t } = useApp();
 
     return (
-        <div className="p-4 space-y-8">
-            <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-6">{t.settings}</h2>
+        <div className="p-4 space-y-8 animate-in slide-in-from-right-4 duration-300">
+            <div className="flex items-center space-x-4 mb-6">
+                <button
+                    onClick={onClose}
+                    className="p-2 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                >
+                    <ArrowLeft size={24} className="text-slate-600 dark:text-slate-300 rtl:rotate-180" />
+                </button>
+                <h2 className="text-3xl font-serif font-bold text-slate-900 dark:text-white">{t.settings}</h2>
+            </div>
             
             <section>
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.language}</h3>
@@ -459,8 +468,9 @@ const AppContent = () => {
       );
   }
 
-  const filteredPeople = people.filter(person =>
-    person.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPeople = people.filter(p =>
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (p.relationship && p.relationship.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   const sortedPeople = [...filteredPeople].sort((a, b) => {
@@ -505,13 +515,36 @@ const AppContent = () => {
       </div>
 
       {/* Main Content */}
-      <main className="p-6 max-w-2xl mx-auto space-y-6">
+      <main className="p-6 max-w-2xl mx-auto space-y-6 animate-in fade-in duration-500">
+        {/* Search Bar */}
+        {people.length > 0 && (
+          <div className="relative mb-6">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Search size={20} className="text-slate-400" />
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search..."
+              className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm focus:ring-2 focus:ring-primary-500 outline-none transition-all text-slate-900 dark:text-white placeholder:text-slate-400"
+            />
+          </div>
+        )}
+
         {sortedPeople.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center">
-                <div className="bg-primary-50 dark:bg-primary-900/20 p-6 rounded-full mb-6 ring-8 ring-primary-50/50 dark:ring-primary-900/10">
-                    <Calendar size={48} className="text-primary-500" />
+            <div className="flex flex-col items-center justify-center py-24 text-center opacity-80 transition-all duration-300">
+                <div className="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 p-8 rounded-full mb-6 shadow-sm border border-slate-200 dark:border-slate-700">
+                    <Calendar size={56} className="text-slate-400 dark:text-slate-500" />
                 </div>
-                <p className="text-xl font-serif text-slate-700 dark:text-slate-300 max-w-sm leading-relaxed">{t.emptyState}</p>
+                <h3 className="text-2xl font-serif font-bold text-slate-800 dark:text-slate-200 mb-2">
+                    {searchQuery ? "No results found" : "It's a bit empty here"}
+                </h3>
+                <p className="text-md font-sans text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
+                    {searchQuery
+                        ? `We couldn't find anyone matching "${searchQuery}".`
+                        : t.emptyState}
+                </p>
             </div>
         ) : (
             sortedPeople.map(person => (
