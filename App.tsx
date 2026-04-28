@@ -475,8 +475,8 @@ const AppContent = () => {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-gradient-to-r from-slate-50 to-slate-100/80 dark:from-slate-900/80 dark:to-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 px-6 py-5 flex justify-between items-center transition-all duration-300">
         <div>
-           <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{t.welcome.replace('{name}', settings.userName || t.userName)}</div>
-           <h1 className="text-3xl font-serif font-black text-slate-900 dark:text-white tracking-tight">
+           <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">{t.welcome.replace('{name}', settings.userName || 'User')}</div>
+           <h1 className="text-3xl font-serif font-black tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
              {t.appTitle}
            </h1>
         </div>
@@ -507,11 +507,11 @@ const AppContent = () => {
       {/* Main Content */}
       <main className="p-6 max-w-2xl mx-auto space-y-6">
         {sortedPeople.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center opacity-80 bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 mx-4 mt-8">
-                <div className="bg-white dark:bg-slate-950 p-6 rounded-full mb-6 shadow-md border border-slate-100 dark:border-slate-800 animate-pulse">
+            <div className="flex flex-col items-center justify-center py-24 text-center">
+                <div className="bg-primary-50 dark:bg-primary-900/20 p-6 rounded-full mb-6 ring-8 ring-primary-50/50 dark:ring-primary-900/10">
                     <Calendar size={48} className="text-primary-500" />
                 </div>
-                <p className="text-xl font-serif text-slate-700 dark:text-slate-300 max-w-xs leading-relaxed pb-6">{t.emptyState}</p>
+                <p className="text-xl font-serif text-slate-700 dark:text-slate-300 max-w-sm leading-relaxed">{t.emptyState}</p>
             </div>
         ) : (
             sortedPeople.map(person => (
@@ -524,9 +524,7 @@ const AppContent = () => {
       <div className="fixed bottom-8 right-8 z-50">
         <button 
           onClick={() => setIsAddModalOpen(true)}
-          aria-label={t.addPerson}
-          title={t.addPerson}
-          className="bg-slate-900 dark:bg-primary-600 text-white p-5 rounded-2xl shadow-2xl shadow-slate-900/30 hover:scale-110 hover:-rotate-90 active:scale-95 transition-all duration-300 flex items-center justify-center group"
+          className="bg-primary-600 text-white p-5 rounded-2xl shadow-2xl shadow-primary-600/30 hover:scale-110 hover:-rotate-90 active:scale-95 transition-all duration-300 flex items-center justify-center group"
         >
           <Plus size={32} className="group-hover:rotate-90 transition-transform duration-300" />
         </button>
