@@ -34,7 +34,7 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'Tap the + button to start remembering!',
     manual: 'Manual',
     auto: 'Auto',
-    close: 'Close',
+    search: 'Search...',
   },
   [Language.TURKISH]: {
     appTitle: 'QamarSol',
@@ -69,7 +69,7 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'Başlamak için + düğmesine dokunun!',
     manual: 'Elle',
     auto: 'Oto',
-    close: 'Kapat',
+    search: 'Ara...',
   },
   [Language.OTTOMAN]: {
     appTitle: 'قمرصول',
@@ -104,7 +104,7 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'باشلامق ايچون + طوشنه باصكز!',
     manual: 'ال ايله',
     auto: 'آلى',
-    close: 'قپات',
+    search: 'آرا...',
   },
   [Language.ARABIC]: {
     appTitle: 'قمر وشمس',
@@ -139,7 +139,7 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'اضغط على زر + للبدء!',
     manual: 'يدوي',
     auto: 'آلي',
-    close: 'إغلاق',
+    search: 'بحث...',
   },
   [Language.PERSIAN]: {
     appTitle: 'قمر و شمس',
@@ -174,7 +174,7 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'برای شروع دکمه + را بزنید!',
     manual: 'دستی',
     auto: 'خودکار',
-    close: 'بستن',
+    search: 'جستجو...',
   },
 };
 

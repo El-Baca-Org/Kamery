@@ -72,5 +72,5 @@ export interface Translation {
   emptyStateSubtitle: string;
   manual: string;
   auto: string;
-  close: string;
+  search: string;
 }
