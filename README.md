@@ -4,14 +4,18 @@
   <p><i>Hem Miladi hem de Hicri takvimleri destekleyen, otomatik dönüştürme, çift geri sayım ve çoklu dil desteğine sahip akıllı doğum günü takip uygulaması.</i></p>
 </div>
 
-# Run and deploy your AI Studio app / AI Studio uygulamanızı çalıştırın ve yayınlayın
+# QamarSol - Dual Calendar Birthday Intelligence
+
+## English
+
+**Run and deploy your AI Studio app**
 
 This contains everything you need to run your app locally.
 Bu, uygulamanızı yerel olarak çalıştırmak için ihtiyacınız olan her şeyi içerir.
 
 View your app in AI Studio / Uygulamanızı AI Studio'da görüntüleyin: https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v
 
-## Run Locally / Yerel Olarak Çalıştırma
+### Run Locally
 
 **Prerequisites / Önkoşullar:**  Node.js
 
@@ -33,4 +37,24 @@ View your app in AI Studio / Uygulamanızı AI Studio'da görüntüleyin: https:
    `npm install`
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key / [.env.local](.env.local) dosyasındaki `GEMINI_API_KEY` değerini Gemini API anahtarınıza ayarlayın
 3. Run the app / Uygulamayı çalıştırın:
+   `npm run dev`
+
+---
+
+## Türkçe (Turkish)
+
+**AI Studio uygulamanızı çalıştırın ve dağıtın**
+
+Bu depo, uygulamanızı yerelde çalıştırmak için ihtiyacınız olan her şeyi içerir.
+
+Uygulamanızı AI Studio'da görüntüleyin: https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v
+
+### Yerelde Çalıştırma
+
+**Gereksinimler:** Node.js
+
+1. Bağımlılıkları yükleyin:
+   `npm install`
+2. [.env.local](.env.local) dosyasındaki `GEMINI_API_KEY` değerini kendi Gemini API anahtarınızla değiştirin.
+3. Uygulamayı başlatın:
    `npm run dev`
