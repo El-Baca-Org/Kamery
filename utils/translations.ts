@@ -34,7 +34,8 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'Tap the + button to start remembering!',
     manual: 'Manual',
     auto: 'Auto',
-    search: 'Search...',
+    searchPlaceholder: 'Search people...',
+    noResults: 'No people found matching your search.',
   },
   [Language.TURKISH]: {
     appTitle: 'QamarSol',
@@ -69,7 +70,8 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'Başlamak için + düğmesine dokunun!',
     manual: 'Elle',
     auto: 'Oto',
-    search: 'Ara...',
+    searchPlaceholder: 'Kişi ara...',
+    noResults: 'Aramanızla eşleşen kişi bulunamadı.',
   },
   [Language.OTTOMAN]: {
     appTitle: 'قمرصول',
@@ -104,7 +106,8 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'باشلامق ايچون + طوشنه باصكز!',
     manual: 'ال ايله',
     auto: 'آلى',
-    search: 'آرا...',
+    searchPlaceholder: 'شخص آرا...',
+    noResults: 'آراماكزله أصلشن شخص بولونامادى.',
   },
   [Language.ARABIC]: {
     appTitle: 'قمر وشمس',
@@ -139,7 +142,8 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'اضغط على زر + للبدء!',
     manual: 'يدوي',
     auto: 'آلي',
-    search: 'بحث...',
+    searchPlaceholder: 'ابحث عن أشخاص...',
+    noResults: 'لم يتم العثور على أشخاص يطابقون بحثك.',
   },
   [Language.PERSIAN]: {
     appTitle: 'قمر و شمس',
@@ -174,7 +178,8 @@ export const translations: Record<Language, Translation> = {
     emptyStateSubtitle: 'برای شروع دکمه + را بزنید!',
     manual: 'دستی',
     auto: 'خودکار',
-    search: 'جستجو...',
+    searchPlaceholder: 'جستجوی افراد...',
+    noResults: 'هیچ شخصی مطابق با جستجوی شما یافت نشد.',
   },
 };
 
