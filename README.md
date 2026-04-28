@@ -31,6 +31,7 @@ Uygulamayı kendi bilgisayarınızda çalıştırmak için aşağıdaki adımlar
    ```bash
    npm run dev
    ```
+4. Open the displayed URL (typically `http://localhost:3000` or `http://localhost:5173`) in your browser.
 
 3. Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresine giderek uygulamayı görüntüleyin.
 
