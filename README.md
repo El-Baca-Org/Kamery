@@ -20,40 +20,26 @@ View your app live in AI Studio: [https://ai.studio/apps/drive/1342f1lABST4YQqLS
 
 ## 🚀 Tech Stack
 
-- **Framework:** React 19 + TypeScript
-- **Styling:** Tailwind CSS (with custom themes and typography)
-- **Icons:** Lucide React
-- **Build Tool:** Vite
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
 
-## 🛠️ Installation & Local Development
+---
 
-**Prerequisites:** Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+# AI Studio Uygulamanızı Çalıştırın ve Dağıtın
 
-1. **Clone the repository and navigate into the directory:**
-   (Depending on how you obtained the source)
+Bu döküman uygulamanızı yerel ortamda çalıştırmanız için gereken her şeyi içerir.
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+Uygulamanızı AI Studio'da görüntüleyin: https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v
 
-3. **Configure Environment Variables (if required):**
-   Set the `GEMINI_API_KEY` in `.env.local` to your Gemini API key (if interacting with AI Studio components locally).
+## Yerel Ortamda Çalıştırma
 
-4. **Run the local development server:**
-   ```bash
-   npm run dev
-   ```
-   The application will be available at `http://localhost:3000`.
+**Gereksinimler:** Node.js
 
-## 📦 Build for Production
-
-To create an optimized production build, run:
-```bash
-npm run build
-```
-This will generate the built assets in the `dist` folder.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page or submit a pull request.
+1. Bağımlılıkları yükleyin:
+   `npm install`
+2. [.env.local](.env.local) dosyasındaki `GEMINI_API_KEY` değerini kendi Gemini API anahtarınız ile değiştirin.
+3. Uygulamayı çalıştırın:
+   `npm run dev`
