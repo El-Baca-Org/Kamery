@@ -38,7 +38,7 @@ export const translations: Record<Language, Translation> = {
   },
   [Language.TURKISH]: {
     appTitle: 'QamarSol',
-    dashboard: 'Panel',
+    dashboard: 'Ana Sayfa',
     settings: 'Ayarlar',
     addPerson: 'Kişi Ekle',
     editPerson: 'Kişiyi Düzenle',
@@ -51,7 +51,7 @@ export const translations: Record<Language, Translation> = {
     delete: 'Sil',
     daysRemaining: 'gün kaldı',
     turns: 'Yaş:',
-    theme: 'Görünüm',
+    theme: 'Tema Ayarları',
     language: 'Dil',
     light: 'Açık Mod',
     dark: 'Koyu Mod',

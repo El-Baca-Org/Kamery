@@ -452,7 +452,11 @@ const AppContent = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   if (activeTab === 'settings') {
-      return <SettingsView onClose={() => setActiveTab('dashboard')} />;
+      return (
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <SettingsView onClose={() => setActiveTab('dashboard')} />
+          </div>
+      );
   }
 
   const filteredPeople = people.filter(person =>
@@ -467,7 +471,7 @@ const AppContent = () => {
   });
 
   return (
-    <div className="min-h-screen pb-32 bg-slate-50 dark:bg-slate-950 bg-islamic-pattern bg-fixed">
+    <div className="min-h-screen pb-32 bg-slate-50 dark:bg-slate-950 bg-islamic-pattern bg-fixed animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 px-6 py-5 flex justify-between items-center transition-all duration-300">
         <div>
@@ -503,11 +507,11 @@ const AppContent = () => {
       {/* Main Content */}
       <main className="p-6 max-w-2xl mx-auto space-y-6">
         {sortedPeople.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center opacity-70 hover:opacity-100 transition-opacity duration-300">
-                <div className="bg-slate-200/50 dark:bg-slate-800/50 p-8 rounded-full mb-8 shadow-inner ring-1 ring-slate-900/5 dark:ring-white/5 animate-pulse">
-                    <Calendar size={56} className="text-slate-400 dark:text-slate-500" />
+            <div className="flex flex-col items-center justify-center py-24 text-center opacity-80 bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-700 mx-4 mt-8">
+                <div className="bg-white dark:bg-slate-950 p-6 rounded-full mb-6 shadow-md border border-slate-100 dark:border-slate-800 animate-pulse">
+                    <Calendar size={48} className="text-primary-500" />
                 </div>
-                <p className="text-xl font-serif text-slate-600 dark:text-slate-300 max-w-sm leading-relaxed">{t.emptyState}</p>
+                <p className="text-xl font-serif text-slate-700 dark:text-slate-300 max-w-xs leading-relaxed pb-6">{t.emptyState}</p>
             </div>
         ) : (
             sortedPeople.map(person => (

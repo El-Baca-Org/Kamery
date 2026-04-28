@@ -6,26 +6,54 @@
 
 # QamarSol - Dual Calendar Birthday Intelligence
 
-QamarSol is a modern React application that helps you track birthdays across both Gregorian and Hijri calendars simultaneously. It supports multiple languages and offers a polished user interface.
+QamarSol is an elegant and culturally aware application designed to help you track birthdays and important dates seamlessly across both the **Gregorian** and **Hijri (Islamic)** calendars. Never miss a birthday again, regardless of which calendar your loved ones follow.
 
-QamarSol, doğum günlerini hem Miladi hem de Hicri takvimlerde aynı anda takip etmenize yardımcı olan modern bir React uygulamasıdır. Çoklu dil desteği sunar ve şık bir kullanıcı arayüzüne sahiptir.
+View your app live in AI Studio: [https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v](https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v)
 
-View your app in AI Studio (Uygulamanızı AI Studio'da görüntüleyin): https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v
+## 🌟 Key Features
 
-## Features (Özellikler)
+- **Dual Calendar Tracking:** Automatically synchronizes and tracks birthdays across Gregorian and Hijri calendars.
+- **Multilingual Support:** Available in multiple languages including English, Turkish (Türkçe), Ottoman Turkish (اسكيمز توركجه), Arabic (العربية), and Persian (فارسی). Full RTL (Right-to-Left) layout support.
+- **Auto & Manual Hijri Calculation:** Automatically calculates Hijri dates based on the Gregorian equivalent (using the Umm al-Qura system), while also allowing manual overrides for absolute precision.
+- **Countdown Intelligence:** Visual badges and countdowns displaying exactly how many days are left until the next birthday in both calendars.
+- **Customizable Appearance:** Beautifully crafted UI with support for Light Mode, Dark Mode, and System Default themes.
 
-- **Dual Calendar Tracking:** Track birthdays in both Gregorian and Hijri calendars. (Hem Miladi hem Hicri takvimde doğum günlerini takip edin.)
-- **Multi-language Support:** English, Turkish, Ottoman Turkish, Arabic, and Persian. (Çoklu dil desteği: İngilizce, Türkçe, Osmanlıca, Arapça ve Farsça.)
-- **Light/Dark Mode:** Full support for system, light, and dark themes. (Sistem, aydınlık ve karanlık temalar için tam destek.)
-- **Responsive Design:** Beautiful interface that works on both desktop and mobile. (Hem masaüstü hem de mobil cihazlarda çalışan şık tasarım.)
+## 🚀 Tech Stack
 
-## Run Locally (Yerelde Çalıştırma)
+- **Framework:** React 19 + TypeScript
+- **Styling:** Tailwind CSS (with custom themes and typography)
+- **Icons:** Lucide React
+- **Build Tool:** Vite
 
-**Prerequisites (Gereksinimler):** Node.js
+## 🛠️ Installation & Local Development
 
-1. Install dependencies (Bağımlılıkları yükleyin):
-   `npm install`
-2. Run the app (Uygulamayı çalıştırın):
-   `npm run dev`
-3. Build for production (Üretim için derleyin):
-   `npm run build`
+**Prerequisites:** Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+1. **Clone the repository and navigate into the directory:**
+   (Depending on how you obtained the source)
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables (if required):**
+   Set the `GEMINI_API_KEY` in `.env.local` to your Gemini API key (if interacting with AI Studio components locally).
+
+4. **Run the local development server:**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:3000`.
+
+## 📦 Build for Production
+
+To create an optimized production build, run:
+```bash
+npm run build
+```
+This will generate the built assets in the `dist` folder.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page or submit a pull request.
