@@ -1,64 +1,45 @@
 <div align="center">
-  <h1>QamarSol - Dual Calendar Birthday Intelligence</h1>
-  <p>An intelligent birthday tracker supporting both Gregorian and Hijri calendars with automatic conversion, dual countdowns, and multilingual support.</p>
-  <p><i>Hem Miladi hem de Hicri takvimleri destekleyen, otomatik dönüştürme, çift geri sayım ve çoklu dil desteğine sahip akıllı doğum günü takip uygulaması.</i></p>
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+
+# QamarSol 🌙☀️
+
+**Çift Takvimli Doğum Günü Takipçisi / Dual-Calendar Birthday Intelligence**
 </div>
 
-# QamarSol - Dual Calendar Intelligence
+QamarSol, sevdiklerinizin doğum günlerini hem Miladi (Gregorian) hem de Hicri (Hijri) takvimlere göre takip etmenizi sağlayan şık ve akıllı bir uygulamadır.
 
-QamarSol is an elegant, multi-language React application designed to help you track birthdays and important dates seamlessly across both **Gregorian** and **Hijri** calendars.
+## ✨ Özellikler (Features)
 
-It calculates accurate Hijri dates based on Gregorian input (and vice-versa) using the robust Umm al-Qura system, and keeps track of how many days are left until upcoming birthdays in both calendar formats.
+- **Çift Takvim Desteği:** Doğum günlerini hem Miladi hem de Hicri takvime göre görüntüler ve geri sayım yapar.
+- **Otomatik Hesaplama:** Miladi tarihi girdiğinizde otomatik olarak doğru Hicri tarihi hesaplar. Manuel giriş de mümkündür.
+- **Çoklu Dil Desteği:** Türkçe, İngilizce, Arapça, Farsça ve Eskimez Türkçe (Osmanlıca) dillerini destekler. RTL (Sağdan Sola) okuma yönüne tam uyumludur.
+- **Modern Arayüz:** Açık ve koyu tema seçenekleri, sistem tercihlerine uyum ve göz yormayan zarif bir tasarım sunar.
+- **Yerel Depolama:** Verileriniz tarayıcınızda güvende kalır, hiçbir sunucuya gönderilmez.
 
-## ✨ Features
+## 🚀 Kurulum ve Çalıştırma (Run Locally)
 
-- **Dual Calendar Tracking:** Automatically synchronizes and tracks dates in both Gregorian and Hijri calendars.
-- **Precision Conversions:** Utilizes `Intl.DateTimeFormat` for reliable Hijri/Gregorian date conversions.
-- **Multi-language Support:** Fully localized for:
-  - English
-  - Turkish
-  - Ottoman Turkish (Arabic Script)
-  - Arabic
-  - Persian
-- **RTL & LTR Support:** Dynamically adjusts text direction based on the selected language.
-- **Smart Age Calculation:** Shows upcoming age in both calendar systems accurately.
-- **Theming:** Beautiful Light, Dark, and System-based UI themes built with Tailwind CSS.
-- **Privacy First:** All data is securely stored locally in your browser (`localStorage`). No external databases.
+**Önkoşullar:** Node.js (v18+)
 
-## 🛠️ Tech Stack
+Uygulamayı kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin:
 
-- **Framework:** React 19 + TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS (via CDN)
-- **Icons:** Lucide React
-
-## 🚀 Run Locally
-
-**Prerequisites:**  Node.js (v18+)
-
-1. Clone the repository and navigate to the project directory.
-2. Install dependencies:
+1. **Bağımlılıkları Yükleyin:**
    ```bash
    npm install
    ```
-3. Start the development server:
+
+2. **Geliştirme Sunucusunu Başlatın:**
    ```bash
    npm run dev
    ```
 4. Open the displayed URL (typically `http://localhost:3000` or `http://localhost:5173`) in your browser.
 
-## 📦 Build for Production
+3. Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresine giderek uygulamayı görüntüleyin.
 
-To create a production-ready build:
-
-```bash
-npm run build
-```
-
-The compiled files will be located in the `dist` directory. You can preview the production build using `npm run preview`.
-
-## 🧠 Memory Considerations
-The app uses a lightweight state management system connected to `localStorage` (`qamarsol_settings` and `qamarsol_people`) to ensure data persists between sessions without the need for an external backend.
+## 🛠️ Teknolojiler (Tech Stack)
+- **Framework:** React 19, Vite
+- **Dil:** TypeScript
+- **Stil:** Tailwind CSS
+- **İkonlar:** Lucide React
 
 ---
-*QamarSol - Dual Calendar Intelligence © 2024*
+*Geliştirilmiş ve iyileştirilmiş dokümantasyon.*

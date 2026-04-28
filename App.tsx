@@ -389,22 +389,23 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
                 <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">{t.language}</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {[
-                        { id: Language.OTTOMAN, label: 'اسكيمز توركجه' }, // Eskimez Türkçe in Arabic script
-                        { id: Language.TURKISH, label: 'Türkçe' },
-                        { id: Language.ENGLISH, label: 'English' },
-                        { id: Language.ARABIC, label: 'العربية' },
-                        { id: Language.PERSIAN, label: 'فارسی' },
+                        { id: Language.OTTOMAN, label: 'اسكيمز توركجه', icon: '📜' },
+                        { id: Language.TURKISH, label: 'Türkçe', icon: '🇹🇷' },
+                        { id: Language.ENGLISH, label: 'English', icon: '🇬🇧' },
+                        { id: Language.ARABIC, label: 'العربية', icon: '🇸🇦' },
+                        { id: Language.PERSIAN, label: 'فارسی', icon: '🇮🇷' },
                     ].map(langOption => (
                         <button
                             key={langOption.id}
                             onClick={() => updateSettings({ language: langOption.id })}
-                            className={`p-4 rounded-2xl border text-sm font-bold transition-all transform active:scale-95 ${
+                            className={`p-4 flex items-center justify-center space-x-2 rounded-2xl border text-sm font-bold transition-all ${
                                 settings.language === langOption.id 
                                 ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 shadow-md shadow-primary-500/10'
                                 : 'border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:shadow-sm'
                             }`}
                         >
-                            {langOption.label}
+                            <span className="text-lg opacity-80">{langOption.icon}</span>
+                            <span>{langOption.label}</span>
                         </button>
                     ))}
                 </div>
@@ -515,36 +516,17 @@ const AppContent = () => {
       </div>
 
       {/* Main Content */}
-      <main className="p-6 max-w-2xl mx-auto space-y-6 animate-in fade-in duration-500">
-        {/* Search Bar */}
-        {people.length > 0 && (
-          <div className="relative mb-6">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <Search size={20} className="text-slate-400" />
-            </div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search..."
-              className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm focus:ring-2 focus:ring-primary-500 outline-none transition-all text-slate-900 dark:text-white placeholder:text-slate-400"
-            />
-          </div>
-        )}
-
+      <main className="p-6 max-w-2xl mx-auto space-y-6 min-h-[60vh]">
         {sortedPeople.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center">
-                <div className="bg-primary-50 dark:bg-primary-900/20 p-6 rounded-full mb-6 shadow-sm border border-primary-100 dark:border-primary-800/30">
-                    <Calendar size={48} className="text-primary-500 dark:text-primary-400" />
+            <div className="flex flex-col items-center justify-center py-32 text-center">
+                <div className="relative mb-8 group">
+                    <div className="absolute inset-0 bg-primary-200 dark:bg-primary-900/30 blur-2xl rounded-full opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
+                    <div className="bg-gradient-to-tr from-slate-100 to-white dark:from-slate-800 dark:to-slate-700 p-8 rounded-[2rem] shadow-xl border border-white/50 dark:border-slate-600/50 relative z-10 transform group-hover:scale-105 transition-transform duration-500">
+                        <Calendar size={56} className="text-primary-500 dark:text-primary-400 drop-shadow-md" />
+                    </div>
                 </div>
-                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed mb-8">{t.emptyState}</p>
-                <button
-                  onClick={() => setIsAddModalOpen(true)}
-                  className="px-6 py-3 bg-slate-900 dark:bg-primary-600 text-white rounded-xl shadow-lg shadow-slate-900/20 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center font-medium"
-                >
-                  <Plus size={20} className="mr-2" />
-                  {t.addPerson}
-                </button>
+                <h3 className="text-2xl font-serif font-bold text-slate-800 dark:text-slate-200 mb-3 tracking-tight">{t.welcome.replace('{name}', settings.userName || '')}</h3>
+                <p className="text-lg text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">{t.emptyState}</p>
             </div>
         ) : (
             sortedPeople.map(person => (
@@ -553,8 +535,9 @@ const AppContent = () => {
         )}
       </main>
 
-      <footer className="text-center pb-8 text-slate-400 text-sm mt-8">
-        QamarSol &copy; {new Date().getFullYear()} - Dual Calendar Intelligence
+      {/* Footer */}
+      <footer className="mt-auto py-8 text-center text-sm font-medium text-slate-400 dark:text-slate-600 border-t border-slate-200/50 dark:border-slate-800/50">
+        <p>QamarSol - Dual Calendar Intelligence</p>
       </footer>
 
       {/* Floating Action Button */}
