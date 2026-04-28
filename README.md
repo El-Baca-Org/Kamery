@@ -6,40 +6,18 @@
 **Çift Takvimli Doğum Günü Takipçisi / Dual-Calendar Birthday Intelligence**
 </div>
 
-QamarSol, sevdiklerinizin doğum günlerini hem Miladi (Gregorian) hem de Hicri (Hijri) takvimlere göre takip etmenizi sağlayan şık ve akıllı bir uygulamadır.
+# AI Studio Uygulamanızı Çalıştırın ve Dağıtın
 
-## ✨ Özellikler (Features)
+Bu belge, uygulamanızı yerel ortamda çalıştırmak için ihtiyacınız olan her şeyi içerir.
 
-- **Çift Takvim Desteği:** Doğum günlerini hem Miladi hem de Hicri takvime göre görüntüler ve geri sayım yapar.
-- **Otomatik Hesaplama:** Miladi tarihi girdiğinizde otomatik olarak doğru Hicri tarihi hesaplar. Manuel giriş de mümkündür.
-- **Çoklu Dil Desteği:** Türkçe, İngilizce, Arapça, Farsça ve Eskimez Türkçe (Osmanlıca) dillerini destekler. RTL (Sağdan Sola) okuma yönüne tam uyumludur.
-- **Modern Arayüz:** Açık ve koyu tema seçenekleri, sistem tercihlerine uyum ve göz yormayan zarif bir tasarım sunar.
-- **Yerel Depolama:** Verileriniz tarayıcınızda güvende kalır, hiçbir sunucuya gönderilmez.
+Uygulamanızı AI Studio'da görüntüleyin: https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v
 
-## 🚀 Kurulum ve Çalıştırma (Run Locally)
+## Yerel Olarak Çalıştırın
 
-**Önkoşullar:** Node.js (v18+)
+**Önkoşullar:**  Node.js
 
-Uygulamayı kendi bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin:
-
-1. **Bağımlılıkları Yükleyin:**
-   ```bash
-   npm install
-   ```
-
-2. **Geliştirme Sunucusunu Başlatın:**
-   ```bash
-   npm run dev
-   ```
-4. Open the displayed URL (typically `http://localhost:3000` or `http://localhost:5173`) in your browser.
-
-3. Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresine giderek uygulamayı görüntüleyin.
-
-## 🛠️ Teknolojiler (Tech Stack)
-- **Framework:** React 19, Vite
-- **Dil:** TypeScript
-- **Stil:** Tailwind CSS
-- **İkonlar:** Lucide React
-
----
-*Geliştirilmiş ve iyileştirilmiş dokümantasyon.*
+1. Bağımlılıkları yükleyin:
+   `npm install`
+2. [.env.local](.env.local) dosyasındaki `GEMINI_API_KEY` değerini Gemini API anahtarınız ile güncelleyin.
+3. Uygulamayı çalıştırın:
+   `npm run dev`
