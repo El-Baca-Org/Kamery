@@ -71,4 +71,7 @@ export interface Translation {
   emptyState: string;
   manual: string;
   auto: string;
+  namePlaceholder: string;
+  relationshipPlaceholder: string;
+  userNamePlaceholder: string;
 }

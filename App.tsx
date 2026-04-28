@@ -260,7 +260,7 @@ const PersonForm = ({ onClose, onSubmit, initialData }: { onClose: () => void, o
                         value={name} 
                         onChange={e => setName(e.target.value)} 
                         className="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary-500 outline-none transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-400"
-                        placeholder="e.g. Ali Yilmaz"
+                        placeholder={t.namePlaceholder}
                     />
                 </div>
                 <div>
@@ -270,7 +270,7 @@ const PersonForm = ({ onClose, onSubmit, initialData }: { onClose: () => void, o
                         value={relationship} 
                         onChange={e => setRelationship(e.target.value)} 
                         className="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary-500 outline-none transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-400"
-                        placeholder="e.g. Father, Colleague"
+                        placeholder={t.relationshipPlaceholder}
                     />
                 </div>
             </div>
@@ -408,7 +408,7 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
                     value={settings.userName} 
                     onChange={(e) => updateSettings({ userName: e.target.value })}
                     className="w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary-500 outline-none transition-all"
-                    placeholder="Enter your name"
+                    placeholder={t.userNamePlaceholder}
                 />
             </section>
 
