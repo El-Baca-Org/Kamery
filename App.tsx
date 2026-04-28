@@ -48,7 +48,7 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; title: string; chi
       <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-300 border border-white/20 dark:border-slate-700/50 ring-1 ring-black/5">
         <div className="flex justify-between items-center p-5 border-b border-slate-100 dark:border-slate-800">
           <h2 className="text-2xl font-serif font-bold text-slate-800 dark:text-slate-100 tracking-tight">{title}</h2>
-          <button onClick={onClose} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-500 transition-colors">
+          <button onClick={onClose} aria-label={useApp().t.close} title={useApp().t.close} className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full text-slate-500 transition-colors">
             <X size={20} />
           </button>
         </div>
@@ -110,20 +110,8 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
   const nextH = getNextHijriBirthday(hDateParts);
   const daysH = getDaysUntil(nextH.date);
 
-  if (isEditing) {
-    return (
-        <PersonForm 
-            initialData={person} 
-            onClose={() => setIsEditing(false)} 
-            onSubmit={(p) => {
-                updatePerson(p);
-                setIsEditing(false);
-            }} 
-        />
-    )
-  }
-
   return (
+    <>
     <div className="bg-white dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-slate-950/50 border border-white dark:border-slate-700/50 hover:scale-[1.01] transition-all duration-300 relative group overflow-hidden">
       {/* Decorative Glow */}
       <div className="absolute top-0 right-0 -mt-16 -mr-16 w-32 h-32 bg-primary-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -143,13 +131,16 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
         <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <button 
                 onClick={() => setIsEditing(true)}
+                aria-label={t.editPerson}
+                title={t.editPerson}
                 className="p-2 text-slate-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/30 rounded-xl transition-colors"
             >
-                <SettingsIcon size={18} />
+                <Edit2 size={18} />
             </button>
             {showDeleteConfirm ? (
                 <button 
                 onClick={() => deletePerson(person.id)}
+                aria-label={t.delete}
                 className="p-2 text-red-600 bg-red-50 dark:bg-red-900/30 rounded-xl font-bold text-xs"
                 >
                 {t.delete}?
@@ -158,6 +149,8 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
                 <button 
                 onClick={() => setShowDeleteConfirm(true)}
                 onBlur={() => setTimeout(() => setShowDeleteConfirm(false), 2000)}
+                aria-label={t.delete}
+                title={t.delete}
                 className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-xl transition-colors"
                 >
                 <Trash2 size={18} />
@@ -181,7 +174,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
             <div className="mt-4">
                 <div className={`text-3xl font-serif font-bold ${daysG === 0 ? 'text-red-500 animate-pulse' : 'text-slate-900 dark:text-white'}`}>
                     {daysG === 0 ? t.today : daysG}
-                    {daysG !== 0 && <span className="text-xs font-sans font-medium text-slate-500 ml-1.5 uppercase tracking-wide">{t.daysRemaining.replace('days left', '')}</span>}
+                    {daysG !== 0 && <span className="text-xs font-sans font-medium text-slate-500 ml-1.5 uppercase tracking-wide">{t.daysRemaining}</span>}
                 </div>
                 <div className="mt-2 text-xs font-semibold text-gregorian-600/80 dark:text-gregorian-400/80">
                     {t.turns} {nextG.age}
@@ -203,7 +196,7 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
             <div className="mt-4">
                 <div className={`text-3xl font-serif font-bold ${daysH === 0 ? 'text-red-500 animate-pulse' : 'text-slate-900 dark:text-white'}`}>
                     {daysH === 0 ? t.today : daysH}
-                    {daysH !== 0 && <span className="text-xs font-sans font-medium text-slate-500 ml-1.5 uppercase tracking-wide">{t.daysRemaining.replace('days left', '')}</span>}
+                    {daysH !== 0 && <span className="text-xs font-sans font-medium text-slate-500 ml-1.5 uppercase tracking-wide">{t.daysRemaining}</span>}
                 </div>
                  <div className="mt-2 text-xs font-semibold text-hijri-600/80 dark:text-hijri-400/80">
                     {t.turns} {nextH.age}
@@ -212,6 +205,22 @@ const PersonCard: React.FC<{ person: Person }> = ({ person }) => {
         </div>
       </div>
     </div>
+
+    <Modal
+        isOpen={isEditing}
+        onClose={() => setIsEditing(false)}
+        title={t.editPerson}
+      >
+        <PersonForm
+            initialData={person}
+            onClose={() => setIsEditing(false)}
+            onSubmit={(p) => {
+                updatePerson(p);
+                setIsEditing(false);
+            }}
+        />
+      </Modal>
+    </>
   );
 };
 
@@ -279,7 +288,7 @@ const PersonForm = ({ onClose, onSubmit, initialData }: { onClose: () => void, o
                         value={name} 
                         onChange={e => setName(e.target.value)} 
                         className="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary-500 outline-none transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-400"
-                        placeholder="e.g. Ali Yilmaz"
+                        placeholder={t.namePlaceholder}
                     />
                 </div>
                 <div>
@@ -289,7 +298,7 @@ const PersonForm = ({ onClose, onSubmit, initialData }: { onClose: () => void, o
                         value={relationship} 
                         onChange={e => setRelationship(e.target.value)} 
                         className="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 focus:ring-2 focus:ring-primary-500 outline-none transition-all font-medium text-slate-900 dark:text-white placeholder:text-slate-400"
-                        placeholder="e.g. Father, Colleague"
+                        placeholder={t.relationshipPlaceholder}
                     />
                 </div>
             </div>
@@ -427,7 +436,7 @@ const SettingsView = ({ onClose }: { onClose: () => void }) => {
                     value={settings.userName} 
                     onChange={(e) => updateSettings({ userName: e.target.value })}
                     className="w-full p-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 focus:ring-2 focus:ring-primary-500 outline-none transition-all"
-                    placeholder="Enter your name"
+                    placeholder={t.userNamePlaceholder}
                 />
             </section>
 
@@ -473,6 +482,8 @@ const AppContent = () => {
         </div>
         <button 
             onClick={() => setActiveTab('settings')}
+            aria-label={t.settings}
+            title={t.settings}
             className="p-3 bg-slate-100 dark:bg-slate-900 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors shadow-sm"
         >
           <SettingsIcon size={22} />
@@ -500,7 +511,8 @@ const AppContent = () => {
                 <div className="bg-slate-100 dark:bg-slate-900 p-6 rounded-full mb-6">
                     <Calendar size={48} className="text-slate-400" />
                 </div>
-                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed">{t.emptyState}</p>
+                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed mb-2">{t.emptyState}</p>
+                <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xs">{t.emptyStateSubtitle}</p>
             </div>
         ) : (
             sortedPeople.map(person => (
@@ -513,6 +525,8 @@ const AppContent = () => {
       <div className="fixed bottom-8 right-8 z-50">
         <button 
           onClick={() => setIsAddModalOpen(true)}
+          aria-label={t.addPerson}
+          title={t.addPerson}
           className="bg-slate-900 dark:bg-primary-600 text-white p-5 rounded-2xl shadow-2xl shadow-slate-900/30 hover:scale-110 hover:-rotate-90 active:scale-95 transition-all duration-300 flex items-center justify-center group"
         >
           <Plus size={32} className="group-hover:rotate-90 transition-transform duration-300" />
@@ -535,7 +549,7 @@ const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [settings, setSettingsState] = useState<AppSettings>(() => {
     const saved = localStorage.getItem('qamarsol_settings');
     return saved ? JSON.parse(saved) : {
-      language: Language.OTTOMAN, // Default to Ottoman
+      language: Language.TURKISH, // Default to Turkish
       theme: Theme.SYSTEM,
       primaryCalendar: CalendarType.GREGORIAN,
       userName: ''
