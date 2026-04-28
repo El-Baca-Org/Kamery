@@ -1,12 +1,14 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <h1>QamarSol - Dual Calendar Birthday Intelligence</h1>
+  <p>An intelligent birthday tracker supporting both Gregorian and Hijri calendars with automatic conversion, dual countdowns, and multilingual support.</p>
+  <p><i>Hem Miladi hem de Hicri takvimleri destekleyen, otomatik dönüştürme, çift geri sayım ve çoklu dil desteğine sahip akıllı doğum günü takip uygulaması.</i></p>
 </div>
 
 # QamarSol - Dual Calendar Birthday Intelligence
 
 An intelligent birthday tracker supporting both Gregorian and Hijri calendars with automatic conversion, dual countdowns, and multilingual support.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v
+View your app live in AI Studio: [https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v](https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v)
 
 ## Features
 - **Dual Calendar System:** Tracks birthdays in both Gregorian and Hijri calendars simultaneously.
@@ -16,7 +18,11 @@ View your app in AI Studio: https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIM
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+- **Dual Calendar Tracking:** Automatically synchronizes and tracks birthdays across Gregorian and Hijri calendars.
+- **Multilingual Support:** Available in multiple languages including English, Turkish (Türkçe), Ottoman Turkish (اسكيمز توركجه), Arabic (العربية), and Persian (فارسی). Full RTL (Right-to-Left) layout support.
+- **Auto & Manual Hijri Calculation:** Automatically calculates Hijri dates based on the Gregorian equivalent (using the Umm al-Qura system), while also allowing manual overrides for absolute precision.
+- **Countdown Intelligence:** Visual badges and countdowns displaying exactly how many days are left until the next birthday in both calendars.
+- **Customizable Appearance:** Beautifully crafted UI with support for Light Mode, Dark Mode, and System Default themes.
 
 1. Install dependencies:
    `npm install`
