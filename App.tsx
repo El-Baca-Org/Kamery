@@ -533,18 +533,18 @@ const AppContent = () => {
         )}
 
         {sortedPeople.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center opacity-80 transition-all duration-300">
-                <div className="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 p-8 rounded-full mb-6 shadow-sm border border-slate-200 dark:border-slate-700">
-                    <Calendar size={56} className="text-slate-400 dark:text-slate-500" />
+            <div className="flex flex-col items-center justify-center py-24 text-center">
+                <div className="bg-primary-50 dark:bg-primary-900/20 p-6 rounded-full mb-6 shadow-sm border border-primary-100 dark:border-primary-800/30">
+                    <Calendar size={48} className="text-primary-500 dark:text-primary-400" />
                 </div>
-                <h3 className="text-2xl font-serif font-bold text-slate-800 dark:text-slate-200 mb-2">
-                    {searchQuery ? "No results found" : "It's a bit empty here"}
-                </h3>
-                <p className="text-md font-sans text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
-                    {searchQuery
-                        ? `We couldn't find anyone matching "${searchQuery}".`
-                        : t.emptyState}
-                </p>
+                <p className="text-xl font-serif text-slate-600 dark:text-slate-400 max-w-xs leading-relaxed mb-8">{t.emptyState}</p>
+                <button
+                  onClick={() => setIsAddModalOpen(true)}
+                  className="px-6 py-3 bg-slate-900 dark:bg-primary-600 text-white rounded-xl shadow-lg shadow-slate-900/20 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center font-medium"
+                >
+                  <Plus size={20} className="mr-2" />
+                  {t.addPerson}
+                </button>
             </div>
         ) : (
             sortedPeople.map(person => (
@@ -552,6 +552,10 @@ const AppContent = () => {
             ))
         )}
       </main>
+
+      <footer className="text-center pb-8 text-slate-400 text-sm mt-8">
+        QamarSol &copy; {new Date().getFullYear()} - Dual Calendar Intelligence
+      </footer>
 
       {/* Floating Action Button */}
       <div className="fixed bottom-8 right-8 z-50">

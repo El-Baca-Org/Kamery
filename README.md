@@ -4,56 +4,61 @@
   <p><i>Hem Miladi hem de Hicri takvimleri destekleyen, otomatik dönüştürme, çift geri sayım ve çoklu dil desteğine sahip akıllı doğum günü takip uygulaması.</i></p>
 </div>
 
-# QamarSol - Dual Calendar Birthday Intelligence
+# QamarSol - Dual Calendar Intelligence
 
-QamarSol is an elegant React application designed to help you track birthdays and important dates in both the Gregorian and Hijri calendars seamlessly.
+QamarSol is an elegant, multi-language React application designed to help you track birthdays and important dates seamlessly across both **Gregorian** and **Hijri** calendars.
 
-View your app live in AI Studio: [https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v](https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v)
+It calculates accurate Hijri dates based on Gregorian input (and vice-versa) using the robust Umm al-Qura system, and keeps track of how many days are left until upcoming birthdays in both calendar formats.
 
----
+## ✨ Features
 
-## 🇹🇷 Türkçe (Turkish)
+- **Dual Calendar Tracking:** Automatically synchronizes and tracks dates in both Gregorian and Hijri calendars.
+- **Precision Conversions:** Utilizes `Intl.DateTimeFormat` for reliable Hijri/Gregorian date conversions.
+- **Multi-language Support:** Fully localized for:
+  - English
+  - Turkish
+  - Ottoman Turkish (Arabic Script)
+  - Arabic
+  - Persian
+- **RTL & LTR Support:** Dynamically adjusts text direction based on the selected language.
+- **Smart Age Calculation:** Shows upcoming age in both calendar systems accurately.
+- **Theming:** Beautiful Light, Dark, and System-based UI themes built with Tailwind CSS.
+- **Privacy First:** All data is securely stored locally in your browser (`localStorage`). No external databases.
 
-QamarSol, doğum günlerini ve önemli tarihleri hem Miladi hem de Hicri takvimlerde sorunsuz bir şekilde takip etmenize yardımcı olmak için tasarlanmış şık bir React uygulamasıdır.
+## 🛠️ Tech Stack
 
-### Özellikler
-- **Çift Takvim Desteği:** Miladi tarihleri otomatik olarak Hicri tarihlere (veya tam tersi) çevirir.
-- **Kişi Yönetimi:** Sevdiklerinizi ekleyin, düzenleyin ve her iki takvim için kalan günleri görün.
-- **Çoklu Dil Desteği:** Türkçe, Osmanlı Türkçesi, İngilizce, Arapça ve Farsça dillerini destekler (RTL uyumlu).
-- **Karanlık/Aydınlık Mod:** Sistem tercihine uygun çalışan modern arayüz (Tailwind CSS).
+- **Framework:** React 19 + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS (via CDN)
+- **Icons:** Lucide React
 
-### Kurulum (Yerel Olarak Çalıştırmak İçin)
+## 🚀 Run Locally
 
-**Gereksinimler:** Node.js
+**Prerequisites:**  Node.js (v18+)
 
-1. Bağımlılıkları yükleyin:
+1. Clone the repository and navigate to the project directory.
+2. Install dependencies:
    ```bash
    npm install
    ```
-2. Uygulamayı başlatın:
+3. Start the development server:
    ```bash
    npm run dev
    ```
+4. Open the displayed URL (typically `http://localhost:3000` or `http://localhost:5173`) in your browser.
+
+## 📦 Build for Production
+
+To create a production-ready build:
+
+```bash
+npm run build
+```
+
+The compiled files will be located in the `dist` directory. You can preview the production build using `npm run preview`.
+
+## 🧠 Memory Considerations
+The app uses a lightweight state management system connected to `localStorage` (`qamarsol_settings` and `qamarsol_people`) to ensure data persists between sessions without the need for an external backend.
 
 ---
-
-## 🇬🇧 English
-
-### Features
-- **Dual Calendar Support:** Automatically converts Gregorian dates to Hijri dates (and vice versa) for birthday tracking.
-- **Contact Management:** Add, edit, and organize people, viewing countdowns for both their Gregorian and Hijri birthdays.
-- **Multi-language:** Supports English, Turkish, Ottoman Turkish, Arabic, and Persian, complete with RTL layout support.
-- **Dark/Light Mode:** Beautiful, responsive UI built with Tailwind CSS that respects your system's color scheme preferences.
-
-### Run Locally
-
-**Prerequisites:** Node.js
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Run the app:
-   ```bash
-   npm run dev
-   ```
+*QamarSol - Dual Calendar Intelligence © 2024*
