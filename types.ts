@@ -69,9 +69,8 @@ export interface Translation {
   userName: string;
   welcome: string;
   emptyState: string;
+  emptyStateSubtitle: string;
   manual: string;
   auto: string;
-  namePlaceholder: string;
-  relationshipPlaceholder: string;
-  userNamePlaceholder: string;
+  close: string;
 }
