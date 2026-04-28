@@ -6,21 +6,26 @@
 
 # QamarSol - Dual Calendar Birthday Intelligence
 
-QamarSol is a React application built with Vite and TypeScript that intelligently tracks birthdays in both Gregorian and Hijri calendars.
+QamarSol is a modern React application that helps you track birthdays across both Gregorian and Hijri calendars simultaneously. It supports multiple languages and offers a polished user interface.
 
-## Features / Özellikler
+QamarSol, doğum günlerini hem Miladi hem de Hicri takvimlerde aynı anda takip etmenize yardımcı olan modern bir React uygulamasıdır. Çoklu dil desteği sunar ve şık bir kullanıcı arayüzüne sahiptir.
 
-*   **Dual Calendar Support / Çift Takvim Desteği**: Tracks birthdays using both Gregorian and Hijri calendars. / Doğum günlerini hem Miladi hem de Hicri takvimle takip eder.
-*   **Multi-language / Çoklu Dil**: Supports English, Turkish, Ottoman, Arabic, and Persian. / İngilizce, Türkçe, Osmanlıca, Arapça ve Farsça dillerini destekler.
-*   **Theme Customization / Tema Özelleştirme**: Choose between light, dark, or system default themes. / Açık, koyu veya sistem varsayılanı temaları arasında seçim yapın.
+View your app in AI Studio (Uygulamanızı AI Studio'da görüntüleyin): https://ai.studio/apps/drive/1342f1lABST4YQqLSwvKdIMWvNfBDCm5v
 
-## Run Locally / Yerel Kurulum
+## Features (Özellikler)
 
-**Prerequisites / Önkoşullar:** Node.js
+- **Dual Calendar Tracking:** Track birthdays in both Gregorian and Hijri calendars. (Hem Miladi hem Hicri takvimde doğum günlerini takip edin.)
+- **Multi-language Support:** English, Turkish, Ottoman Turkish, Arabic, and Persian. (Çoklu dil desteği: İngilizce, Türkçe, Osmanlıca, Arapça ve Farsça.)
+- **Light/Dark Mode:** Full support for system, light, and dark themes. (Sistem, aydınlık ve karanlık temalar için tam destek.)
+- **Responsive Design:** Beautiful interface that works on both desktop and mobile. (Hem masaüstü hem de mobil cihazlarda çalışan şık tasarım.)
 
-1. Install dependencies / Bağımlılıkları yükleyin:
+## Run Locally (Yerelde Çalıştırma)
+
+**Prerequisites (Gereksinimler):** Node.js
+
+1. Install dependencies (Bağımlılıkları yükleyin):
    `npm install`
-2. Start the development server / Geliştirme sunucusunu başlatın:
+2. Run the app (Uygulamayı çalıştırın):
    `npm run dev`
-3. Build for production / Üretim için derleyin:
+3. Build for production (Üretim için derleyin):
    `npm run build`
